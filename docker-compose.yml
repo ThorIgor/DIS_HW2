@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: on-failure
+    ports: 
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=hr_system
+      - POSTGRES_HOST=localhost
+  mongo:
+    image: mongo:latest
+    restart: on-failure
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=hr_system
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+  neo4j:
+    image: neo4j:latest
+    restart: on-failure
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment:
+      - NEO4J_AUTH=neo4j/strongpassword
